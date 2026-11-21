@@ -4,8 +4,18 @@
   "buildCommand": "node build-vercel.mjs",
   "outputDirectory": "public",
   "rewrites": [
-    { "source": "/app/:path*", "destination": "/preview.html" },
-    { "source": "/login", "destination": "/preview.html" },
-    { "source": "/signup", "destination": "/preview.html" }
-  ]
+    {
+      "source": "/app/:path*",
+      "destination": "/preview.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/preview.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/preview.html"
+    }
+  ],
+  "installCommand": "node --version"
 }
