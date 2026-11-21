@@ -1,0 +1,261 @@
+#shabi-clips-hud {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2147483640;
+  width: 358px;
+  max-width: calc(100vw - 24px);
+  background: rgba(11, 13, 16, 0.96);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 91, 36, 0.58);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -16px rgba(0, 0, 0, 0.88), 0 0 0 1px rgba(146, 230, 238, 0.16);
+  color: #EEF0EF;
+  font-family: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow: hidden;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#shabi-clips-hud.collapsed .shabi-hud-body {
+  display: none;
+}
+
+.shabi-hud-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  background: linear-gradient(135deg, rgba(255, 91, 36, 0.26), rgba(146, 230, 238, 0.12));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.shabi-hud-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #92E6EE;
+  box-shadow: 0 0 10px #92E6EE;
+  flex: none;
+}
+
+.shabi-hud-dot.busy {
+  background: #FF5B24;
+  box-shadow: 0 0 10px #FF5B24;
+  animation: shabiPulse 1.1s infinite;
+}
+
+.shabi-hud-dot.ok {
+  background: #3DDC97;
+  box-shadow: 0 0 10px #3DDC97;
+}
+
+.shabi-hud-dot.err {
+  background: #FF5A66;
+  box-shadow: 0 0 10px #FF5A66;
+}
+
+@keyframes shabiPulse {
+  50% { opacity: 0.35; }
+}
+
+.shabi-hud-brand {
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: -0.02em;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shabi-hud-plat {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  flex: none;
+}
+
+.shabi-hud-plat.plat-youtube {
+  background: rgba(255, 59, 78, 0.2);
+  color: #FF8C97;
+}
+
+.shabi-hud-plat.plat-tiktok {
+  background: rgba(146, 230, 238, 0.2);
+  color: #92E6EE;
+}
+
+.shabi-hud-plat.plat-instagram {
+  background: rgba(255, 91, 36, 0.24);
+  color: #FFB499;
+}
+
+.shabi-hud-plat.plat-facebook {
+  background: rgba(59, 130, 246, 0.22);
+  color: #93C5FD;
+}
+
+.shabi-hud-iconbtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #EEF0EF;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+}
+
+.shabi-hud-iconbtn:hover {
+  background: rgba(255, 91, 36, 0.35);
+}
+
+.shabi-hud-body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shabi-hud-title {
+  font-weight: 600;
+  color: #EEF0EF;
+  font-size: 13.5px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.shabi-hud-path {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 9px;
+  background: #14181E;
+  border: 1px solid #2A313C;
+  font-size: 11px;
+  color: #BFC7C9;
+}
+
+.shabi-hud-path code {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: ui-monospace, Consolas, monospace;
+  color: #FFB499;
+}
+
+.shabi-hud-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: #1C2128;
+  overflow: hidden;
+}
+
+.shabi-hud-bar > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #FF5B24, #92E6EE);
+  transition: width 0.25s ease;
+}
+
+.shabi-hud-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shabi-hud-steps li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #8E97A4;
+}
+
+.shabi-hud-steps li.active {
+  color: #EEF0EF;
+  font-weight: 600;
+}
+
+.shabi-hud-steps li.done {
+  color: #3DDC97;
+}
+
+.shabi-hud-steps li.fail {
+  color: #FF5A66;
+}
+
+.shabi-hud-status {
+  font-size: 12px;
+  color: #BFC7C9;
+}
+
+.shabi-hud-status.err {
+  color: #FF5A66;
+}
+
+.shabi-hud-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.shabi-hud-btn {
+  flex: 1 1 auto;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid #353D4B;
+  background: #181C22;
+  color: #EEF0EF;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.shabi-hud-btn:hover {
+  border-color: #FF5B24;
+  background: #231917;
+}
+
+.shabi-hud-btn.primary {
+  background: linear-gradient(135deg, #FF5B24, #E04A17);
+  border-color: transparent;
+  color: #FFFFFF;
+}
+
+.shabi-hud-btn.danger {
+  color: #FF5A66;
+  border-color: rgba(255, 90, 102, 0.35);
+}
+
+.shabi-publish-glow {
+  outline: 3px solid #FF5B24 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 22px rgba(255, 91, 36, 0.85) !important;
+  animation: shabiGlow 1.3s ease-in-out infinite alternate !important;
+}
+
+@keyframes shabiGlow {
+  from { box-shadow: 0 0 12px rgba(255, 91, 36, 0.75); }
+  to { box-shadow: 0 0 26px rgba(146, 230, 238, 0.9); }
+}

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+app/data/
+app/bin/
+python/
+.vercel/
+*.db
+*.sqlite*
+*.log
+*.tmp
+youtube_cookies.txt

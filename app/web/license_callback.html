@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Upfern sign-in</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#080A0D;color:#F2F4FF;font:16px/1.5 Geist,"Segoe UI",system-ui,sans-serif;padding:16px;text-align:center}
+.card{max-width:380px}.big{font-size:44px}h1{font-size:22px;margin:10px 0 6px}p{color:#9CA6C2;margin:0}.bad{color:#FFB499}
+</style>
+</head>
+<body>
+<div class="card"><div class="big" id="ic">⏳</div><h1 id="h">Signing you in…</h1><p id="p">One moment.</p></div>
+<script>
+(async () => {
+  const set = (ic, h, p, bad) => { document.getElementById("ic").textContent = ic; document.getElementById("h").textContent = h;
+    const el = document.getElementById("p"); el.textContent = p; el.className = bad ? "bad" : ""; };
+  const f = new URLSearchParams(location.hash.slice(1)), q = new URLSearchParams(location.search);
+  history.replaceState(null, "", location.pathname);          // the tokens don't stay in the address bar
+  const err = f.get("error_description") || q.get("error_description");
+  if (err) return set("⚠️", "Sign-in didn't work", err.replace(/\+/g, " "), true);
+  const access = f.get("access_token"), refresh = f.get("refresh_token");
+  if (!access || !refresh) return set("⚠️", "Sign-in didn't work", "Nothing came back from Google. Go back to Upfern and try again.", true);
+  try {
+    const r = await fetch("/api/license/session", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({access, refresh})});
+    const d = await r.json(); if (!r.ok) throw new Error(d.detail || "That didn't work.");
+    set("✅", "You're signed in", `${d.email}. Go back to the Upfern window and enter your license key. You can close this tab.`);
+  } catch (e) { set("⚠️", "Sign-in didn't work", e.message, true); }
+})();
+</script>
+</body>
+</html>

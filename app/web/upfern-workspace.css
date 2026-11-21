@@ -1,0 +1,100 @@
+/* Upfern's orange mark is the accent for actions, selection and the playhead. */
+.studio-app {
+  --workspace: #111110;
+  --surface: #191918;
+  --well: #10100f;
+  --divider: #34312e;
+  --upfern-orange: #ff5b24;
+}
+.editor .top {
+  background: var(--workspace);
+  height: 60px;
+  padding-inline: clamp(12px, 2vw, 28px);
+}
+.editor-header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.monitor-switch { display: none; }
+.editor .inspector-title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 3px 2px 12px;
+}
+.editor .studio > .card, .editor .work > .card {
+  background: var(--surface) !important;
+  border-color: var(--divider) !important;
+  border-radius: 12px !important;
+}
+.editor .studio { background: var(--workspace) !important; }
+.editor .stage, .editor .view, .editor .timeline-grid { background-color: var(--well); }
+.editor .screen { box-shadow: 0 0 0 1px #ffffff12, 0 16px 40px #0006; }
+.editor .dock { --playhead: var(--upfern-orange); }
+.editor .tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+.editor .tabs button { font-size: 11px; min-height: 42px; }
+.editor .tabs button.on { box-shadow: inset 0 0 0 1px #ff5b2470 !important; }
+.editor .panes { padding-inline: 3px; }
+.editor .transport { column-gap: 8px; row-gap: 6px; }
+.editor .side > .acts { flex-wrap: wrap; }
+.editor .side > .acts button { flex: 1 1 auto; }
+.dashboard .topbar { border-bottom-color: var(--divider); }
+.dashboard .content { padding-block: clamp(16px, 2.8vw, 36px); }
+.dashboard .nav-item.on { box-shadow: inset 2px 0 #ff5b24; }
+.hero-editorial .hero-copy h1 { text-wrap: balance; }
+.hero-editorial .hero-copy .lead { max-width: 46ch; }
+
+@media (min-width: 1001px) {
+  .editor .studio {
+    grid-template-columns: clamp(205px, 20vw, 292px) minmax(0, 1fr) clamp(275px, 24vw, 348px) !important;
+    grid-template-rows: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+  .editor .studio .stagecard, .editor .studio .result, .editor .studio > .side { grid-row: 1 !important; }
+  .editor .studio .dock { grid-column: 1 / -1 !important; grid-row: 2 !important; }
+  .editor .studio > .side { padding: 14px; }
+  .editor .side > .acts #save, .editor .side > .acts #export { display: none; }
+  .editor .side > .acts { display: none; }
+}
+
+@media (max-width: 1000px) {
+  .editor .studio { display: flex !important; flex-direction: column; gap: 10px; padding: 10px; }
+  .editor .monitor-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .editor .monitor-switch .btn { min-height: 42px; }
+  .editor .monitor-switch .btn[aria-pressed="true"] { background: #321c15; border-color: #9a462d; color: #ffd1bf; }
+  .editor .work { display: block !important; order: 1; }
+  .editor .work > .card { min-height: 0; }
+  .editor .work > .result { height: clamp(310px, 55svh, 580px); }
+  .editor .work > .stagecard .stage { min-height: min(42svh, 420px); }
+  .editor[data-monitor="preview"]:not(.bigsrc) .work > .stagecard,
+  .editor[data-monitor="source"]:not(.bigprev) .work > .result { display: none; }
+  .editor .studio > .dock { order: 2; }
+  .editor .studio > .side { order: 3; max-height: none; }
+  .editor .studio > .side > .panes { overflow: visible; }
+  .editor .studio > .side > .acts { padding-bottom: env(safe-area-inset-bottom); }
+  .editor .studio > .side > .acts .btn { min-height: 44px; }
+  .editor #headersave { display: none; }
+}
+
+@media (max-width: 540px) {
+  .editor .top nav { display: none; }
+  .editor .top .wordmark { flex-shrink: 0; }
+  .editor .top .btn { min-height: 40px; }
+  .editor .dock .transport .sp { display: none; }
+  .editor .transport .time { width: 100%; }
+  .editor .transport .btn, .editor .transport .badge { min-height: 36px; }
+  .editor .auddock #dockanudge { flex-wrap: wrap; }
+  .editor .studio > .dock { padding: 10px; }
+}
+.editor .clip-share:has([hidden]) { display: none; }
+.editor .clip-share { display: flex; justify-content: center; margin-top: 8px; }
+.editor .clip-share .btn { min-height: 36px; }
+.editor .desktop-autopost { display: flex; align-items: center; justify-content: center; margin-top: 12px; text-decoration: none; }
+@media (max-width: 700px) {
+  .editor .clip-share .btn { min-height: 44px; }
+  .editor .desktop-autopost { display: none; }
+}
+.hero-editorial .hero-copy h1 { font-size: clamp(62px, 6.3vw, 108px); line-height: .98; }
+.hero-editorial .hero-copy h1 em { display: block; }
+@media (max-width: 760px) {
+  .hero-editorial .hero-copy h1 { font-size: clamp(46px, 10vw, 74px); }
+  .hero-editorial .hero-copy .lead { margin-inline: auto; }
+}

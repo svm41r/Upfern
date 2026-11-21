@@ -1,0 +1,12 @@
+{
+  "id": "/app",
+  "name": "Upfern",
+  "short_name": "Upfern",
+  "start_url": "/app",
+  "display": "standalone",
+  "background_color": "#0B0D10",
+  "icons": [
+    {"src": "/brand/upfern-320.png?v=8", "sizes": "320x320", "type": "image/png"},
+    {"src": "/brand/upfern-512.png?v=8", "sizes": "512x512", "type": "image/png"}
+  ]
+}

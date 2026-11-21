@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Upfern</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="head">
+    <div class="brand">
+      <img src="../icons/icon-48.png" alt="Upfern" width="28" height="28">
+      <div>
+        <strong>upfern</strong>
+        <small>4-Platform Auto Poster</small>
+      </div>
+    </div>
+    <span class="pill warn" id="connPill">Checking…</span>
+  </header>
+
+  <main class="wrap">
+    <button type="button" class="hero-cta" id="processBtn">
+      <span class="hero-main">⚡ Auto-Post All Pending</span>
+      <span class="hero-sub" id="heroSub">YouTube · TikTok · Instagram · Facebook</span>
+    </button>
+
+    <section class="card">
+      <div class="row-between">
+        <span class="lbl">Platforms</span>
+        <span class="lbl-dim">Click to open or resume</span>
+      </div>
+      <div class="plat-grid">
+        <button type="button" class="plat-btn" data-plat="youtube">
+          <span class="plat-dot yt"></span>
+          <span class="plat-name">YouTube</span>
+          <span class="plat-cnt" id="cnt-youtube" hidden>0</span>
+        </button>
+        <button type="button" class="plat-btn" data-plat="tiktok">
+          <span class="plat-dot tt"></span>
+          <span class="plat-name">TikTok</span>
+          <span class="plat-cnt" id="cnt-tiktok" hidden>0</span>
+        </button>
+        <button type="button" class="plat-btn" data-plat="instagram">
+          <span class="plat-dot ig"></span>
+          <span class="plat-name">Instagram</span>
+          <span class="plat-cnt" id="cnt-instagram" hidden>0</span>
+        </button>
+        <button type="button" class="plat-btn" data-plat="facebook">
+          <span class="plat-dot fb"></span>
+          <span class="plat-name">Facebook</span>
+          <span class="plat-cnt" id="cnt-facebook" hidden>0</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row-between">
+        <span class="lbl">Auto-Publish Controls</span>
+        <span class="msg" id="saveMsg"></span>
+      </div>
+      <label class="chk highlight"><input type="checkbox" id="autoPubChk" checked> <span><b>1-Click Auto-Publish</b> (clicks Publish/Share/Post hands-free)</span></label>
+      <div class="grid2">
+        <label class="field">
+          <span>Visibility</span>
+          <select id="privacySel">
+            <option value="public">Public</option>
+            <option value="unlisted">Unlisted</option>
+            <option value="private">Private</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>YT Channel URL</span>
+          <input type="text" id="channelUrl" placeholder="studio.youtube.com/channel/...">
+        </label>
+      </div>
+      <label class="chk"><input type="checkbox" id="addShortsChk"> Auto-add #Shorts (YouTube)</label>
+      <label class="chk"><input type="checkbox" id="notKidsChk" checked> Not Made for Kids (YouTube)</label>
+      <div class="acts">
+        <button type="button" class="btn primary" id="saveSettingsBtn">Save Settings</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row-between">
+        <span class="lbl">Export Folder</span>
+        <button type="button" class="btn sm" id="openFolderBtn">Open Folder</button>
+      </div>
+      <code class="path" id="exportPath">Documents\Upfern</code>
+      <div class="inline">
+        <input type="text" id="serverUrl" value="http://127.0.0.1:8767" spellcheck="false" aria-label="App Server URL">
+        <button type="button" class="btn sm" id="saveUrlBtn">Connect</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row-between">
+        <span class="lbl">Social Queue</span>
+        <button type="button" class="btn sm" id="refreshBtn">Refresh</button>
+      </div>
+      <div class="qlist" id="queueList">
+        <p class="empty">Connecting to Upfern…</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
