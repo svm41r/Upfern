@@ -13,3 +13,4 @@ python/
 *.log
 *.tmp
 youtube_cookies.txt
+/app/public/
